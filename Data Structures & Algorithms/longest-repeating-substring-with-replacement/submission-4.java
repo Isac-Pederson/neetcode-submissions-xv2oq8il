@@ -1,0 +1,43 @@
+class Solution {
+    public int characterReplacement(String s, int k) {
+        HashSet<Character> set = new HashSet<>();
+        int longestSub = 0;
+
+        for(char c : s.toCharArray()){
+            set.add(c);
+        }
+
+        for(char c : set){
+            int l = 0;
+            int count = 0;
+            
+            for(int r = 0; r < s.length(); r++){
+                if(s.charAt(r) == c){
+                    count++;
+                }
+
+                while((r-l+1) - count > k){
+                    if(s.charAt(r) == c){
+                        count--;
+                    }
+                    l++;
+                }
+                
+                longestSub =  Math.max(longestSub, r-l+1);
+            
+            }
+
+
+
+
+
+
+        }
+
+        return longestSub;
+
+
+
+        
+    }
+}

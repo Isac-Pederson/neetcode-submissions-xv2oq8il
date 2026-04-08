@@ -1,0 +1,35 @@
+class Solution {
+    public int characterReplacement(String s, int k) {
+        HashSet<Character> set = new HashSet<>();
+        int res = 0;
+
+        for(char c : s.toCharArray()){
+            set.add(c);
+        }
+
+        for(char c : set){
+            int count = 0;
+            int l = 0;
+            for(int r = 0; r < s.length(); r++){
+             while((r-l+1) - count > k){
+                if(s.charAt(l) == c){
+                    count--;
+                }
+                    l++;
+                }
+            if(s.charAt(r) == c){
+             count++;
+
+            }
+
+             res = Math.max(res, count+2);
+
+        }
+
+        }
+
+        return res;
+
+        
+    }
+}
